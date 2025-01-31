@@ -1,7 +1,16 @@
--- The database name will be passed as an argument, so we don't need to hardcode it.
--- The script queries the INFORMATION_SCHEMA to get column details for the 'books' table.
+-- Script to print the full description of the `books` table
+-- Database name is passed as an argument to the mysql command
 
-SELECT COLUMN_NAME, COLUMN_TYPE, IS_NULLABLE, COLUMN_DEFAULT, EXTRA
-FROM INFORMATION_SCHEMA.COLUMNS
-WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'Books';
+SELECT
+    COLUMN_NAME AS 'Field',
+    COLUMN_TYPE AS 'Type',
+    IS_NULLABLE AS 'Null',
+    COLUMN_KEY AS 'Key',
+    COLUMN_DEFAULT AS 'Default',
+    EXTRA AS 'Extra'
+FROM
+    information_schema.COLUMNS
+WHERE
+    TABLE_SCHEMA = 'alx_book_store'
+    AND TABLE_NAME = 'books';
 
