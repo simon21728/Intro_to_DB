@@ -23,10 +23,12 @@ CREATE TABLE IF NOT EXISTS Customers (
 );
 
 -- Create the orders table
-CREATE TABLE IF NOT EXISTS Orders (
+CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
-    order_date DATE NOT NULL,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10, 2),
+    status VARCHAR(50),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
 );
 
